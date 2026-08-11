@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | Malik Dhakki Dates Nursery{% endblock %}
+
+{% block content %}
+    <!-- ============================
+     ABOUT
+============================= -->
+    <section style="padding-top: 100px;" class="about-section section-pad" id="about" style="margin-bottom: 10px;">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-imgs">
+                    <div class="about-img-main">
+                        <img src="{% static 'images/About_img1.jpeg' %}" alt="Date farm" loading="lazy" />
+                    </div>
+                    <div class="about-img-small">
+                        <img style="object-fit: fill;" src="{% static 'images/About_harvest.jpg' %}" alt="Date harvest" />
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="tag"><i class="fa-solid fa-leaf"></i> Our Story</span>
+                    <h2 class="section-title" style="margin-top:20px;">Rooted in Tradition, <span>Grown with
+                            Passion</span></h2>
+                    <p class="about-desc">
+                        Malik Dhakki Dates Nursery Farms was born from a deep love for the land. For over many years
+                        (This Business is passed down through generations. ), our family has
+                        nurtured date
+                        palms under the open sky, using traditional methods combined with modern agricultural knowledge.
+                        Every plant
+                        we grow and every date we harvest carries the care and dedication of generations.
+                        <br /><br />
+                        We supply premium Kanjor plants, fresh Kanjor, and sun-dried Chawara to farmers, wholesalers,
+                        exporters, and
+                        households across the country and beyond.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fa-solid fa-seedling about-feature-icon"></i>
+                            <div class="about-feature-text">
+                                <div class="about-feature-title">Expert Cultivation</div>
+                                30+ years of date farming mastery
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fa-solid fa-globe about-feature-icon"></i>
+                            <div class="about-feature-text">
+                                <div class="about-feature-title">Export Ready</div>
+                                Premium packaging for global markets
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fa-solid fa-flask about-feature-icon"></i>
+                            <div class="about-feature-text">
+                                <div class="about-feature-title">No Chemicals</div>
+                                100% organic, pesticide-free
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fa-solid fa-handshake about-feature-icon"></i>
+                            <div class="about-feature-text">
+                                <div class="about-feature-title">Trusted Partner</div>
+                                2,500+ satisfied customers
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                        <a href="{% url 'contact' %}" class="btn-primary"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+                        <a href="{% url 'gallery' %}" class="btn-outline"><i class="fa-solid fa-images"></i> View Farm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/{{ site_settings.whatsapp_number|default:'923469892120' }}?text=Assalamu Alaikum! I want to order from {{ site_settings.site_title|default:'Malik Dhakki Dates Nursery' }} Farms."
+  target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <span class="cart-title">Your Cart</span>
+    <button class="cart-close" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total">
+      <span class="cart-total-label">Total Amount</span>
+      <span class="cart-total-price" id="cartTotal">Rs. 0</span>
+    </div>
+    <button class="btn-primary cart-checkout" onclick="checkoutWhatsApp()">
+      <i class="fa-solid fa-bag-shopping"></i> Proceed to Order
+    </button>
+    <a href="#" class="btn-whatsapp cart-wa-order" onclick="checkoutWhatsApp();return false;">
+      <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
+    </a>
+  </div>
+</div>

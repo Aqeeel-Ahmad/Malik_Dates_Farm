@@ -1,0 +1,85 @@
+{% load static %}
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo logo">
+          <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+          <div class="logo-text">
+            <span class="logo-main">{{ site_settings.site_title|default:"Malik Dhakki Dates Nursery" }}</span>
+            <span class="logo-sub">Premium Farms</span>
+          </div>
+        </div>
+        <p class="footer-desc">Rooted in tradition, grown with passion. We bring you the finest date plants and
+          organic dates directly from our farm to your doorstep.</p>
+        <div class="footer-social">
+          {% if site_settings.facebook_url %}
+          <a href="{{ site_settings.facebook_url }}" target="_blank" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          {% endif %}
+          {% if site_settings.instagram_url and site_settings.instagram_url != '#' %}
+          <a href="{{ site_settings.instagram_url }}" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          {% endif %}
+          <a href="https://wa.me/{{ site_settings.whatsapp_number|default:'923469892120' }}" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+          {% if site_settings.youtube_url and site_settings.youtube_url != '#' %}
+          <a href="{{ site_settings.youtube_url }}" target="_blank" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+          {% endif %}
+          {% if site_settings.tiktok_url and site_settings.tiktok_url != '#' %}
+          <a href="{{ site_settings.tiktok_url }}" target="_blank" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'home' %}"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+          <li><a href="{% url 'about' %}"><i class="fa-solid fa-chevron-right"></i> About Us</a></li>
+          <li><a href="{% url 'services' %}"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+          <li><a href="{% url 'gallery' %}"><i class="fa-solid fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="{% url 'contact' %}"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Products</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'home' %}#products"><i class="fa-solid fa-chevron-right"></i> Kanjor Plants</a></li>
+          <li><a href="{% url 'home' %}#products"><i class="fa-solid fa-chevron-right"></i> Fresh Kanjor</a></li>
+          <li><a href="{% url 'home' %}#products"><i class="fa-solid fa-chevron-right"></i> Premium Chawara</a></li>
+          <li><a href="{% url 'home' %}#products"><i class="fa-solid fa-chevron-right"></i> Gift Boxes</a></li>
+          <li><a href="{% url 'home' %}#products"><i class="fa-solid fa-chevron-right"></i> Bulk Orders</a></li>
+          <li><a href="{% url 'services' %}"><i class="fa-solid fa-chevron-right"></i> Consultancy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-newsletter">
+        <h4 class="footer-col-title">Stay Updated</h4>
+        <p class="footer-nl-desc">Subscribe to get seasonal offers, farming tips, and harvest updates directly in your
+          inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email…" id="nlEmail" />
+          <button onclick="subscribeNewsletter()">Subscribe</button>
+        </div>
+        <div style="margin-top:24px;">
+          <a href="https://wa.me/{{ site_settings.whatsapp_number|default:'923469892120' }}?text=Hello! I want to order dates from {{ site_settings.site_title|default:'Malik Dhakki Dates Nursery' }}"
+            target="_blank" class="btn-whatsapp" style="font-size:0.85rem;padding:12px 20px;">
+            <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 {{ site_settings.site_title|default:"Malik Dhakki Dates Nursery" }} & Premium Farms. All rights reserved.</p>
+      <h5
+        style="color: rgb(255, 0, 0); font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: lighter; font-style: italic;">
+        Developer<span style="font-weight: bold; color: rgb(255, 255, 255);"> <a
+            href="https://aqeeel-ahmad.github.io/Aqeel_Ahmad-Portfolio/">"Aqeel Ahmad"</a></span></h5>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

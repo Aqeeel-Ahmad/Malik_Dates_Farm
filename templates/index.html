@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- ============================
+    HERO
+============================= -->
+  <section class="hero" id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="container hero-content" style="width:100%;">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag">
+          </div>
+          <h1 class="hero-headline">
+            Premium Date Plants &<br /><span class="gold">Organic Dates</span>
+            <span class="urdu" style="font-family: Noto Nastaliq Urdu; font-size: 33px;">مستقیم فارم سے — براہ راست کھیت
+              سے آپ تک</span>
+          </h1>
+          <p class="hero-desc">
+            Discover the finest Kanjor plants, fresh Kanjor dates, and premium Chawara. Sourced directly from our farm —
+            for farmers, wholesalers, exporters, and retail customers.
+          </p>
+          <span class="urdu"
+            style="font-family: Noto Nastaliq Urdu; font-size: larger; color: whitesmoke; padding-bottom: 70px;">کھجور
+            کے بہترین پودے، تازہ کھجوریں اور پریمیم کوالٹی کا چھورا دریافت کریں۔ ہمارے فارم سے براہ راست ماخذ -
+            کسانوں،حول سیل کے لیے اور اپنے اســــتمال کے لیے۔</span>
+          <div class="hero-actions">
+            <a href="#products" class="btn-primary">
+              <i class="fa-solid fa-basket-shopping"></i> Order Now
+            </a>
+            <a href="https://wa.me/{{ site_settings.whatsapp_number|default:'923469892120' }}?text=Aslam-o-Alakum! I want to buy date, Can I get details?" target="_blank" class="btn-whatsapp">
+              <i class="fa-brands fa-whatsapp"></i> Contact on WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-main-img">
+            <img src="{% static 'images/Main_hero.jpeg' %}" alt="Date palm farm" loading="lazy" />
+            <div class="hero-img-overlay"></div>
+          </div>
+          <div class="hero-badge hero-badge-1">
+            <div class="hero-badge-icon green"><i class="fa-solid fa-seedling"></i></div>
+            <div class="hero-badge-text">
+              <span class="hero-badge-value">5000+ Plants</span>
+              <span class="hero-badge-label">Available Now</span>
+            </div>
+          </div>
+          <div class="hero-badge hero-badge-2">
+            <div class="hero-badge-icon gold"><i class="fa-solid fa-star"></i></div>
+            <div class="hero-badge-text">
+              <span class="hero-badge-value">4.5 / 5.0</span>
+              <span class="hero-badge-label">Customer Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+     TRUST BAR
+============================= -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item reveal">
+          <i class="fa-solid fa-shield-halved trust-icon"></i>
+          <div class="trust-text">
+            <span class="trust-title">Certified Organic</span>
+            <span class="trust-desc">No pesticides, 100% natural</span>
+          </div>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-1">
+          <i class="fa-solid fa-truck-fast trust-icon"></i>
+          <div class="trust-text">
+            <span class="trust-title">Fast Delivery</span>
+            <span class="trust-desc">Nationwide shipping available</span>
+          </div>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-2">
+          <i class="fa-solid fa-wheat-awn trust-icon"></i>
+          <div class="trust-text">
+            <span class="trust-title">Farm Fresh</span>
+            <span class="trust-desc">Direct from our farmlands</span>
+          </div>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-3">
+          <i class="fa-solid fa-boxes-stacked trust-icon"></i>
+          <div class="trust-text">
+            <span class="trust-title">Bulk & Wholesale</span>
+            <span class="trust-desc">Export quality packaging</span>
+          </div>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-4">
+          <i class="fa-solid fa-headset trust-icon"></i>
+          <div class="trust-text">
+            <span class="trust-title">24/7 Support</span>
+            <span class="trust-desc">WhatsApp & call support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+     NUMBERS
+============================= -->
+  <section class="numbers-section">
+    <div class="container">
+      <div class="numbers-grid">
+        <div class="number-item reveal">
+          <div class="number-val">{{ site_settings.years_of_farming|default:"30+" }}</div>
+          <div class="number-label">Years of Farming</div>
+        </div>
+        <div class="number-item reveal delay-1">
+          <div class="number-val">{{ site_settings.happy_customers|default:"250+" }}</div>
+          <div class="number-label">Happy Customers</div>
+        </div>
+        <div class="number-item reveal delay-2">
+          <div class="number-val">{{ site_settings.export_cities|default:"50+" }}</div>
+          <div class="number-label">Export Cities</div>
+        </div>
+        <div class="number-item reveal delay-3">
+          <div class="number-val">{{ site_settings.organic_percentage|default:"100%" }}</div>
+          <div class="number-label">Organic Certified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+     PRODUCTS
+============================= -->
+  <section class="products-section section-pad" id="products">
+    <div class="container">
+      <div class="products-header">
+        <div class="tag reveal"><i class="fa-solid fa-store"></i> Our Products</div>
+        <h2 class="section-title reveal" style="margin-top:16px;">Premium <span>Date Products</span></h2>
+        <p class="section-subtitle reveal">From seedling to harvest — we offer the finest date plants and varieties
+          directly sourced from our farm.</p>
+        
+        <div class="search-box-wrap reveal" style="max-width:480px;margin:24px auto 0;position:relative;">
+          <form method="GET" action="{% url 'home' %}#products" onsubmit="return true;">
+            <div style="display:flex;gap:8px;background:var(--bg-card);border:1px solid rgba(212,175,55,0.3);border-radius:30px;padding:6px 16px;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+              <i class="fa-solid fa-magnifying-glass" style="color:var(--gold-main);"></i>
+              <input type="text" name="q" id="productSearchInput" placeholder="Search Kanjor, Chawara, Date Plants..." value="{{ search_query|default:'' }}" style="flex:1;background:transparent;border:none;outline:none;color:var(--text-light);font-size:0.95rem;padding:8px 0;" onkeyup="handleLiveSearch(this.value)" />
+              {% if search_query %}
+              <a href="{% url 'home' %}#products" style="color:var(--text-light);text-decoration:none;"><i class="fa-solid fa-xmark"></i></a>
+              {% endif %}
+            </div>
+          </form>
+        </div>
+
+        <div class="category-tabs" style="margin-top:24px;">
+          <button class="tab-btn active" onclick="filterProducts('all',this)">All Products</button>
+          <button class="tab-btn" onclick="filterProducts('plant',this)">Date Plants</button>
+          <button class="tab-btn" onclick="filterProducts('fresh',this)">Fresh Dates</button>
+          <button class="tab-btn" onclick="filterProducts('dry',this)">Dry Dates</button>
+        </div>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Products rendered dynamically by script.js using Django ORM JSON -->
+      </div>
+    </div>
+  </section>
+{% endblock %}

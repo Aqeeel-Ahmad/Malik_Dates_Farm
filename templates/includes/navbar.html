@@ -1,0 +1,58 @@
+{% load static %}
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="{% url 'home' %}" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+        <div class="logo-text">
+          <span class="logo-main">{{ site_settings.site_title|default:"Malik Dhakki Dates Nursery" }}</span>
+          <span class="logo-sub">Premium Farms</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a></li>
+        <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
+        <li><a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Services</a></li>
+        <li><a href="{% url 'gallery' %}" class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">Gallery</a></li>
+        <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/{{ site_settings.whatsapp_number|default:'923469892120' }}?text=Assalamu Alaikum! I want to order dates from {{ site_settings.site_title|default:'Malik Dhakki Dates Nursery' }}"
+          target="_blank" class="btn-outline" style="padding:10px 20px;font-size:0.85rem;">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <button class="cart-btn" onclick="toggleCart()">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()"><i class="fa-solid fa-xmark"></i></button>
+  <div class="mobile-nav-logo">
+    <div class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+      <div class="logo-text">
+        <span class="logo-main">{{ site_settings.site_title|default:"Malik Dhakki Dates Nursery" }}</span>
+        <span class="logo-sub">Premium Farms</span>
+      </div>
+    </div>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="{% url 'home' %}" onclick="toggleMobileNav()">Home</a>
+    <a href="{% url 'about' %}" onclick="toggleMobileNav()">About Us</a>
+    <a href="{% url 'services' %}" onclick="toggleMobileNav()">Services</a>
+    <a href="{% url 'gallery' %}" onclick="toggleMobileNav()">Gallery</a>
+    <a href="{% url 'contact' %}" onclick="toggleMobileNav()">Contact</a>
+  </nav>
+</div>
+<div class="cart-overlay" id="mobileNavOverlay" onclick="toggleMobileNav()" style="z-index:1040;"></div>

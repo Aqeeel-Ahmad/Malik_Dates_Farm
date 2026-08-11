@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="{% block meta_desc %}Malik Dhakki Dates Nursery Farms – Premium Date Plants & Organic Dates. Fresh Kanjor, Dry Chawara, and Date Plants sourced directly from the farm. Wholesale & Export available.{% endblock %}" />
+  <meta name="keywords"
+    content="date plants, kanjor, chawara, dry dates, fresh dates, date farm, wholesale dates, export dates" />
+  <title>{% block title %}Malik Dhakki Dates Nursery | Premium Date Plants & Organic Dates{% endblock %}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+  {% include 'includes/navbar.html' %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'includes/footer.html' %}
+  {% include 'includes/cart_sidebar.html' %}
+  {% include 'includes/product_modal.html' %}
+
+  <!-- JS -->
+  {% if products_json %}
+  <script>
+    window.INITIAL_PRODUCTS = {{ products_json|safe }};
+  </script>
+  {% endif %}
+  <script src="{% static 'js/script.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+
+</body>
+</html>

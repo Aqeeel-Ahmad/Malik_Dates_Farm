@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Farm Gallery | {{ site_settings.site_title|default:"Malik Dhakki Dates Nursery" }}{% endblock %}
+
+{% block content %}
+    <!-- ============================
+     GALLERY
+============================= -->
+    <section class="gallery-section section-pad" id="gallery" style="padding-top:100px;">
+        <div class="container">
+            <div class="gallery-header">
+                <span class="tag reveal"><i class="fa-solid fa-images"></i> Farm Gallery</span>
+                <h2 class="section-title" style="margin-top:16px;">Glimpses of Our <span>Farm & Harvest</span>
+                </h2>
+            </div>
+            <div class="gallery-grid">
+                {% for item in farm_items %}
+                <div class="gallery-item reveal delay-{{ forloop.counter0|add:1 }}">
+                    <img {% if item.img_style %}style="{{ item.img_style }}"{% endif %} src="{{ item.image_url }}" alt="{{ item.alt_text|default:'Farm gallery image' }}" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                {% empty %}
+                <div class="gallery-item">
+                    <img style="object-position: bottom;" src="{% static 'images/Gallery1.jpg' %}" alt="Date palm grove" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                <div class="gallery-item delay-1">
+                    <img style="object-position: bottom;" src="{% static 'images/Gallery2.jpg' %}" alt="Fresh dates on branch" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 0; padding-bottom: 0;" class="gallery-section section-pad">
+        <div class="container">
+            <div class="gallery-header">
+                <span class="tag reveal"><i class="fa-solid fa-images"></i> Farm Gallery</span>
+                <h2 class="section-title" style="margin-top:16px;"><span>Making Chawara</span> of our Farm
+                </h2>
+            </div>
+            <div class="gallery-grid">
+                {% for item in chawara_items %}
+                <div class="gallery-item reveal delay-{{ forloop.counter0|add:1 }}">
+                    <img {% if item.img_style %}style="{{ item.img_style }}"{% endif %} src="{{ item.image_url }}" alt="{{ item.alt_text|default:'Making Chawara image' }}" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                {% empty %}
+                <div class="gallery-item">
+                    <img style="object-position: bottom;" src="{% static 'images/chwara4.jpg' %}" alt="Date palm grove" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 50px;" class="gallery-section section-pad">
+        <div class="container">
+            <div class="gallery-header">
+                <span class="tag reveal"><i class="fa-solid fa-images"></i> Farm Gallery</span>
+                <h2 class="section-title" style="margin-top:16px;"><span>Making Kanjor</span> of our Farm
+                </h2>
+            </div>
+            <div class="gallery-grid">
+                {% for item in kanjoor_items %}
+                <div class="gallery-item reveal delay-{{ forloop.counter0|add:1 }}">
+                    <img {% if item.img_style %}style="{{ item.img_style }}"{% endif %} src="{{ item.image_url }}" alt="{{ item.alt_text|default:'Making Kanjoor image' }}" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                {% empty %}
+                <div class="gallery-item">
+                    <img style="object-position: bottom;" src="{% static 'images/kanjoor3.jpg' %}" alt="Date palm grove" />
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================
+     TESTIMONIALS
+============================= -->
+    <section class="testimonials-section section-pad">
+        <div class="container">
+            <div class="testimonials-header">
+                <span class="tag"
+                    style="background:rgba(201,151,58,0.15);border-color:rgba(201,151,58,0.3);color:var(--gold-light);">
+                    <i class="fa-solid fa-quote-left"></i> Customer Reviews
+                </span>
+                <h2 class="section-title" style="color:var(--white);margin-top:16px;">What Our <span>Customers
+                        Say</span>
+                </h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.65);margin:12px auto 0;">Trusted by
+                    farmers,
+                    wholesalers, and families across the country.</p>
+            </div>
+            <div class="testimonials-grid">
+                {% for t in testimonials %}
+                <div class="testimonial-card {% if forloop.counter0 > 0 %}delay-{{ forloop.counter0 }}{% endif %}">
+                    <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"{{ t.text }}"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">{{ t.author_initials }}</div>
+                        <div class="author-info">
+                            <div class="author-name">{{ t.author_name }}</div>
+                            <div class="author-role">{{ t.author_role }}</div>
+                            <div class="author-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

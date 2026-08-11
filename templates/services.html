@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services | {{ site_settings.site_title|default:"Malik Dhakki Dates Nursery" }}{% endblock %}
+
+{% block content %}
+    <!-- ============================
+     SERVICES
+============================= -->
+    <section style="padding-top: 100px;" class="services-section section-pad" id="services">
+        <div class="container">
+            <div class="services-header">
+                <span class="tag"><i class="fa-solid fa-hands-holding-circle"></i> What We Offer</span>
+                <h2 class="section-title" style="margin-top:16px;">Our <span>Specialized Services</span></h2>
+                <p class="section-subtitle">Beyond selling premium dates, we empower farmers and businesses with
+                    knowledge and support.</p>
+            </div>
+            <div class="services-grid">
+                {% for service in services %}
+                <div class="service-card {% if forloop.counter0 > 0 %}delay-{{ forloop.counter0 }}{% endif %}">
+                    <div class="service-icon"><i class="{{ service.icon_class|default:'fa-solid fa-seedling' }}"></i></div>
+                    <h3 class="service-name">{{ service.title }}</h3>
+                    <p class="service-desc">{{ service.description }}</p>
+                    <a href="{{ service.link_url }}" class="service-link">{{ service.link_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                {% empty %}
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3 class="service-name">Plantation Guidance</h3>
+                    <p class="service-desc">Complete step-by-step guidance for setting up your own date palm plantation — from soil preparation to irrigation and care schedules.</p>
+                    <a href="{% url 'contact' %}" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
