@@ -7,11 +7,4 @@ if BASE_DIR not in sys.path:
 
 from config.wsgi import application
 
-# Auto-migrate SQLite on serverless startup if tables don't exist yet
-try:
-    from django.core.management import call_command
-    call_command('migrate', interactive=False)
-except Exception:
-    pass
-
 app = application

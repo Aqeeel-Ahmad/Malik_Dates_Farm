@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-48of@d&fqdxl7#)2!95n51jn!0o-45pxwuaffc)4389(#)=9wr')
-DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
-ALLOWED_HOSTS = ['*','.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
+DEBUG = True
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app', 'https://*.now.sh']
 
 
