@@ -9,11 +9,14 @@ def home_view(request):
     search_query = request.GET.get('q', '').strip()
     category_query = request.GET.get('category', '').strip()
 
-    products = Product.objects.filter(is_active=True)
-    if search_query:
-        products = products.filter(name__icontains=search_query) | products.filter(desc__icontains=search_query)
-    if category_query and category_query != 'all':
-        products = products.filter(category=category_query)
+    try:
+        products = Product.objects.filter(is_active=True)
+        if search_query:
+            products = products.filter(name__icontains=search_query) | products.filter(desc__icontains=search_query)
+        if category_query and category_query != 'all':
+            products = products.filter(category=category_query)
+    except Exception:
+        products = []
 
     products_list = []
     for p in products:
@@ -45,14 +48,23 @@ def about_view(request):
     return render(request, 'about.html')
 
 def services_view(request):
-    services = Service.objects.filter(is_active=True)
+    try:
+        services = Service.objects.filter(is_active=True)
+    except Exception:
+        services = []
     return render(request, 'services.html', {'services': services})
 
 def gallery_view(request):
-    farm_items = GalleryItem.objects.filter(section='farm')
-    chawara_items = GalleryItem.objects.filter(section='chawara')
-    kanjoor_items = GalleryItem.objects.filter(section='kanjoor')
-    testimonials = Testimonial.objects.filter(is_published=True)
+    try:
+        farm_items = GalleryItem.objects.filter(section='farm')
+        chawara_items = GalleryItem.objects.filter(section='chawara')
+        kanjoor_items = GalleryItem.objects.filter(section='kanjoor')
+        testimonials = Testimonial.objects.filter(is_published=True)
+    except Exception:
+        farm_items = []
+        chawara_items = []
+        kanjoor_items = []
+        testimonials = []
 
     context = {
         'farm_items': farm_items,
