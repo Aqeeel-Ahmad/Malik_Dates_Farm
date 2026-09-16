@@ -84,13 +84,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 if os.environ.get('VERCEL') or os.environ.get('AWS_EXECUTION_ENV'):
     tmp_db = Path('/tmp/db.sqlite3')
-    if not tmp_db.exists() and (BASE_DIR / 'db.sqlite3').exists():
-        import shutil
-        try:
-            shutil.copyfile(BASE_DIR / 'db.sqlite3', tmp_db)
-        except Exception:
-            pass
-    DB_PATH = tmp_db if tmp_db.exists() else BASE_DIR / 'db.sqlite3'
+    src_db = BASE_DIR / 'db.sqlite3'
+    if src_db.exists():
+        src_size = src_db.stat().st_size
+        if not tmp_db.exists() or tmp_db.stat().st_size != src_size:
+            import shutil, tempfile
+            try:
+                temp_copy = os.path.join(tempfile.gettempdir(), f'db_copy_{os.getpid()}.sqlite3')
+                shutil.copyfile(src_db, temp_copy)
+                os.replace(temp_copy, tmp_db)
+            except Exception as err:
+                print("Failed copying db to /tmp:", err)
+    DB_PATH = tmp_db if tmp_db.exists() and tmp_db.stat().st_size > 0 else src_db
 else:
     DB_PATH = BASE_DIR / 'db.sqlite3'
 
