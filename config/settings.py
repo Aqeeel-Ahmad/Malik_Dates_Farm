@@ -21,9 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-48of@d&fqdxl7#)2!95n51jn!0o-45pxwuaffc)4389(#)=9wr')
-DEBUG = True
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app', 'https://*.now.sh']
+DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
+ALLOWED_HOSTS = [h.strip() for h in os.getenv('ALLOWED_HOSTS', '*').split(',') if h.strip()]
 
 
 # Application definition
@@ -40,22 +39,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-]
-
-try:
-    import whitenoise
-    MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
-except ImportError:
-    pass
-
-MIDDLEWARE.extend([
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-])
+]
 
 ROOT_URLCONF = 'config.urls'
 
@@ -82,27 +72,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-if os.environ.get('VERCEL') or os.environ.get('AWS_EXECUTION_ENV'):
-    tmp_db = Path('/tmp/db.sqlite3')
-    src_db = BASE_DIR / 'db.sqlite3'
-    if src_db.exists():
-        src_size = src_db.stat().st_size
-        if not tmp_db.exists() or tmp_db.stat().st_size != src_size:
-            import shutil, tempfile
-            try:
-                temp_copy = os.path.join(tempfile.gettempdir(), f'db_copy_{os.getpid()}.sqlite3')
-                shutil.copyfile(src_db, temp_copy)
-                os.replace(temp_copy, tmp_db)
-            except Exception as err:
-                print("Failed copying db to /tmp:", err)
-    DB_PATH = tmp_db if tmp_db.exists() and tmp_db.stat().st_size > 0 else src_db
-else:
-    DB_PATH = BASE_DIR / 'db.sqlite3'
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DB_PATH,
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -144,7 +117,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
