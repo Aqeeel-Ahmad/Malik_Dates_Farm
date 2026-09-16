@@ -8,3 +8,4 @@ if BASE_DIR not in sys.path:
 from config.wsgi import application
 
 app = application
+handler = application
